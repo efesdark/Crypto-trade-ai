@@ -172,3 +172,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+#for securing api key
+# API anahtarlarını içeren dosyalar
+.env
+config.py
+secrets.py
