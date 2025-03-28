@@ -1,4 +1,4 @@
-# trade.py
+# trade_testnet.py
 def place_order(symbol, quantity, buy=True):
     side = 'BUY' if buy else 'SELL'
     order = client.create_order(
