@@ -1,6 +1,7 @@
 # Import necessary libraries
 from binance.client import Client
 import pandas as pd
+client = Client(api_key="your_api_key", api_secret="your_api_secret")
 
 # Function to fetch historical price data
 def get_historical_prices(symbol, interval, start_time, end_time):
@@ -16,7 +17,7 @@ def get_historical_prices(symbol, interval, start_time, end_time):
     Returns:
     pd.DataFrame: A pandas DataFrame containing the historical price data.
     """
-    client = Client(api_key="your_api_key", api_secret="your_api_secret")
+    
     klines = client.get_historical_klines(symbol, interval, start_time, end_time)
 
     # Convert the response into a pandas DataFrame
@@ -45,14 +46,26 @@ def moving_average(df, period):
 
 # RSI Calculation
 def rsi(df, period=14):
-    delta = df['close'].diff()
-    gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
-    loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+    # 'close' sütununu sayısal verilere dönüştür
+    df['close'] = pd.to_numeric(df['close'], errors='coerce')
 
-    rs = gain / loss
+    # Fiyat farklarını hesapla
+    delta = df['close'].diff()
+
+    # Kazanç ve kayıpları ayır
+    gain = delta.where(delta > 0, 0)
+    loss = -delta.where(delta < 0, 0)
+
+    # Hareketli ortalamaları hesapla
+    avg_gain = gain.rolling(window=period, min_periods=1).mean()
+    avg_loss = loss.rolling(window=period, min_periods=1).mean()
+
+    # RSI hesaplama
+    rs = avg_gain / avg_loss
     rsi = 100 - (100 / (1 + rs))
 
     return rsi
+
 
 # MACD Calculation
 def macd(df, fast_period=12, slow_period=26, signal_period=9):
@@ -62,4 +75,21 @@ def macd(df, fast_period=12, slow_period=26, signal_period=9):
     df['macd'] = df['ema_fast'] - df['ema_slow']
     df['macd_signal'] = df['macd'].astype(float).ewm(span=signal_period, adjust=False).mean()
     
+    return df
+
+def fetch_data_from_binance(symbol, interval, lookback):
+    # Verileri Binance API'sından çekmek için gerekli kod
+    klines = client.get_historical_klines(symbol, interval, f"{lookback} day ago UTC")
+    
+    # Klines verisini bir DataFrame'e çevir
+    df = pd.DataFrame(klines, columns=[
+        "timestamp", "open", "high", "low", "close", "volume", 
+        "close_time", "quote_asset_volume", "number_of_trades", 
+        "taker_buy_base_asset_volume", "taker_buy_quote_asset_volume", "ignore"
+    ])
+    
+    # Zaman damgasını datetime formatına çevir
+    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
+    
+    # Veriyi döndür
     return df

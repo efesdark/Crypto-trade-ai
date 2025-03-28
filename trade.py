@@ -1,5 +1,7 @@
 # trade_testnet.py
-# trade.py
+from api import client  # api.py dosyasından client'ı al
+
+
 
 # Function to generate buy/sell signals based on strategy
 def generate_trade_signal(df):
@@ -19,3 +21,4 @@ def execute_trade(symbol, action, quantity):
         order = client.order_market_sell(symbol=symbol, quantity=quantity)
     
     print(f"Executed {action} order: {order}")
+
