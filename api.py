@@ -1,4 +1,5 @@
 # api.py dosyasındaki test
+
 from binance.client import Client
 from dotenv import load_dotenv
 import os
