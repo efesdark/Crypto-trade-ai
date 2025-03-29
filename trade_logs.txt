@@ -30,3 +30,39 @@ INFO:root:Asset: USDT, Free: 8348.1086, Locked: 0.0
 INFO:root:Buy 0.01 BTCUSDT at 82518.53000000 (Order ID: 11569867)
 INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
 INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
+INFO:root:Trade Signal from current.py: Hold
+INFO:root:Asset: BTC, Free: 1.03, Locked: 0.0
+INFO:root:Asset: USDT, Free: 7522.9233, Locked: 0.0
