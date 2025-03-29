@@ -20,5 +20,9 @@ def execute_trade(symbol, action, quantity):
     elif action == "sell":
         order = client.order_market_sell(symbol=symbol, quantity=quantity)
     
-    print(f"Executed {action} order: {order}")
-
+    # Siparişin başarılı olup olmadığını kontrol edin
+    if order:
+        print(f"Executed {action} order: {order}")
+        return order  # order'ı geri döndürüyoruz
+    
+    return None

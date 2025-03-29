@@ -1,5 +1,6 @@
 # main.py
 from binance.client import Client
+from logs import log_balance, log_trade, log_trade_history
 
 
 from market_price import fetch_data_from_binance
@@ -7,11 +8,17 @@ from market_price import moving_average, rsi, macd
 from trade import generate_trade_signal, execute_trade
 import pandas as pd
 
-# Binance API key ve secret'ı .env dosyasından alıyoruz
-API_KEY = 'your_api_key'
-API_SECRET = 'your_api_secret'
 
-client = Client(API_KEY, API_SECRET)
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+API_KEY = os.getenv("BINANCE_API_KEY")
+API_SECRET = os.getenv("BINANCE_API_SECRET")
+# Binance API key ve secret'ı .env dosyasından alıyoruz
+
+
+client = Client(API_KEY, API_SECRET, testnet=True)
 
 
 # Example: Fetch market data (Assuming you have already fetched data as df)
@@ -23,6 +30,9 @@ lookback = 5  # Son 5 günün verisini al
 
 # Binance'ten veri çekme
 df = fetch_data_from_binance(symbol, interval, lookback)
+
+# Hesap bakiyesini logla
+log_balance()  # Bakiyenizi logluyoruz
 
 # Calculate moving averages, RSI, and MACD
 df['short_ma'] = moving_average(df, 50)  # 50-period short MA
@@ -42,10 +52,17 @@ df['sell_signal'] = (df['rsi'] > 70)  # RSI 70'in üstüne çıktığında satı
 symbol = "BTCUSDT"  # Define your trading pair
 if df['buy_signal'].iloc[-1]:
     print("Buying!")
-    execute_trade(symbol, "buy", 0.01)  # Example: Buy 0.01 BTC
+    order = execute_trade(symbol, "buy", 0.01)  # Ticaret yapıldığında
+    if order:  # Eğer işlem başarılıysa
+        log_trade(symbol, "buy", 0.01, order['fills'][0]['price'], order['orderId'])  # Alım işlemi kaydedilir
+        log_balance()  # Alım sonrası bakiyeyi logla
+
 elif df['sell_signal'].iloc[-1]:
     print("Selling!")
-    execute_trade(symbol, "sell", 0.01)  # Example: Sell 0.01 BTC
+    order = execute_trade(symbol, "sell", 0.01)  # Ticaret yapıldığında
+    if order:  # Eğer işlem başarılıysa
+        log_trade(symbol, "sell", 0.01, order['fills'][0]['price'], order['orderId'])  # Satış işlemi kaydedilir
+        log_balance()  # Satış sonrası bakiyeyi logla
 
 # Sonuçları kontrol et
 print(df[['timestamp', 'rsi', 'buy_signal', 'sell_signal']].tail())  # Son 5 satırdaki veriyi yazdır
