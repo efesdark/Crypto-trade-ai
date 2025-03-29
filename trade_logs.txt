@@ -1,2 +1,8 @@
 INFO:root:Asset: BTC, Free: 1.0, Locked: 0.0
 INFO:root:Asset: USDT, Free: 10000.0, Locked: 0.0
+INFO:root:Asset: BTC, Free: 1.0, Locked: 0.0
+INFO:root:Asset: USDT, Free: 10000.0, Locked: 0.0
+INFO:root:Asset: BTC, Free: 1.0, Locked: 0.0
+INFO:root:Asset: USDT, Free: 10000.0, Locked: 0.0
+INFO:root:Asset: BTC, Free: 1.0, Locked: 0.0
+INFO:root:Asset: USDT, Free: 10000.0, Locked: 0.0

@@ -1,17 +1,17 @@
 # logs.py
 import logging
-from binance.client import Client
-from dotenv import load_dotenv
-import os
+#from binance.client import Client
+#from dotenv import load_dotenv
+#import os
 
-load_dotenv()
-API_KEY = os.getenv("BINANCE_API_KEY")
-API_SECRET = os.getenv("BINANCE_API_SECRET")
+#load_dotenv()
+#API_KEY = os.getenv("BINANCE_API_KEY")
+#API_SECRET = os.getenv("BINANCE_API_SECRET")
 # Binance API key ve secret'ı .env dosyasından alıyoruz
-
+from api import client 
 
 logging.basicConfig(filename="trade_logs.txt", level=logging.INFO)
-client = Client(API_KEY, API_SECRET, testnet=True)
+#client = Client(API_KEY, API_SECRET, testnet=True)
 
 def log_balance():
     account = client.get_account()

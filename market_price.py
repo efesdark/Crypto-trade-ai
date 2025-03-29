@@ -1,7 +1,9 @@
 # Import necessary libraries
-from binance.client import Client
+#from binance.client import Client
 import pandas as pd
-client = Client(api_key="your_api_key", api_secret="your_api_secret")
+
+from api import client 
+#client = Client(api_key="your_api_key", api_secret="your_api_secret")
 
 # Function to fetch historical price data
 def get_historical_prices(symbol, interval, start_time, end_time):

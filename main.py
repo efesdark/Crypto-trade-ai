@@ -11,14 +11,14 @@ import pandas as pd
 
 from dotenv import load_dotenv
 import os
-
-load_dotenv()
-API_KEY = os.getenv("BINANCE_API_KEY")
-API_SECRET = os.getenv("BINANCE_API_SECRET")
+from api import client 
+#load_dotenv()
+#API_KEY = os.getenv("BINANCE_API_KEY")
+#API_SECRET = os.getenv("BINANCE_API_SECRET")
 # Binance API key ve secret'ı .env dosyasından alıyoruz
 
 
-client = Client(API_KEY, API_SECRET, testnet=True)
+#client = Client(API_KEY, API_SECRET, testnet=True)
 
 
 # Example: Fetch market data (Assuming you have already fetched data as df)

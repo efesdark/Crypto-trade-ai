@@ -14,5 +14,5 @@ testnet_url = os.getenv("BINANCE_TESTNET_URL")
 client = Client(api_key, api_secret, testnet=True)
 
 # Hesap bilgilerini al
-balance = client.get_account()
-print(balance)
+#balance = client.get_account()
+#print(balance)
